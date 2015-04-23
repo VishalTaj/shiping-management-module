@@ -1,1 +1,1 @@
-# shiping-manaqgement-module
+# shiping-management-module
