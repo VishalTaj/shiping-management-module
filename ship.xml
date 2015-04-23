@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="utf-8"?>
+<openerp>
+    <data>
+        <record model="ir.ui.view" id="sales_ship_form">
+            <field name="name">sales.ship.form</field>
+            <field name="model">sales.ship</field>
+            <field name="type">form</field>
+            <field name="arch" type="xml">
+                <form string="Shipment Sales">
+                    <group>
+                        <field name="IMO"/>
+                        <field name="hull_number"/>
+                        <field name="engine_number"/>
+                        <field name="vessel_name"/>
+                        <field name="build_year"/>
+                        <field name="ship_yard"/>
+                        <field name="ship_owner"/>
+                        <field name="ship_management"/>
+                        <field name="engine_builder"/>
+                    </group>
+                </form>
+            </field>
+        </record>
+        <record model="ir.ui.view" id="sales_ship_tree">
+            <field name="name">sales.ship.tree</field>
+            <field name="model">sales.ship</field>
+            <field name="arch" type="xml">
+                <tree string="Shipment Sales">
+                    <field name="IMO"/>
+                    <field name="hull_number"/>
+                    <field name="engine_number"/>
+                    <field name="vessel_name"/>
+                    <field name="build_year"/>
+                    <field name="ship_yard"/>
+                    <field name="ship_owner"/>
+                    <field name="ship_management"/>
+                    <field name="engine_builder"/>
+                </tree>
+            </field>
+        </record>
+        <record model="ir.actions.act_window" id="shipment_action">
+            <field name="name">Shipment Sales</field>
+            <field name="res_model">sales.ship</field>
+            <field name="view_type">form</field>
+            <field name="view_mode">tree,form</field>
+        </record>
+        <menuitem id="menu_ship" parent="base.menu_sale_config_sales" action="shipment_action" />
+    </data>
+</openerp>
