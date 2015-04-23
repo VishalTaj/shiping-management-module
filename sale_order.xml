@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="utf-8"?>
+<openerp>
+    <data>
+         <record model="ir.ui.view" id="ship_order_tree">
+            <field name="model">sale.order</field>
+            <field name="name">view.inherit.sale.order.tree</field>
+            <field name="inherit_id" ref="sale.view_order_tree"/>
+            <field name="arch" type="xml">
+                    <field name="user_id" position="after">
+                        <field name="shipping"/>
+                    </field>
+            </field>
+        </record>
+        <record model="ir.ui.view" id="ship_order_form">
+            <field name="model">sale.order</field>
+            <field name="name">view.inherit.sale.order.form</field>
+            <field name="inherit_id" ref="sale.view_order_form"/>
+            <field name="type">form</field>
+            <field name="arch" type="xml">
+                <xpath expr="//sheet/group" position="inside" >
+                    <field name="shipping" required="False" />
+                    <button id="update_line" string="Update" type="object" name="writes"/>
+                </xpath>
+            </field>
+        </record>
+        <record model="ir.ui.view" id="ship_order_line">
+            <field name="model">sale.order</field>
+            <field name="name">sale.order.forms</field>
+            <field name="inherit_id" ref="sale.view_order_form"/>
+            <field name="arch" type="xml">
+                <xpath expr="//field[@name='order_line']/tree/field[@name='product_uom_qty']" position="after">
+                    <field name='shipping_line' />
+                </xpath>
+                <xpath expr="//field[@name='order_line']" position="attributes">
+                    <attribute name="context">{'default_shipping_line': shipping}</attribute>
+                </xpath>
+            </field>
+        </record>
+
+    </data>
+</openerp>
